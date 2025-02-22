@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const TextInput = () => {
@@ -9,22 +10,28 @@ const TextInput = () => {
       />
       <div className="flex flex-col gap-[10px]">
         <div className="flex gap-[10px] pt-[16px] items-center">
-          <input
-            type="checkbox"
-            className="w-[16px] h-[16px] border-1 border-neutral-900 rounded-[4px]"
-            id="spaces"
-          />
+          <label className="relative group hover:cursor-pointer">
+            <input
+              type="checkbox"
+              className="w-[16px] h-[16px] peer appearance-none border border-1 border-neutral-200 rounded-[4px] group-hover:cursor-pointer group-hover:border-neutral-600 focus:ring-2 focus:ring-offset-2 focus:ring-purple-400 checked:bg-purple-400 checked:border-purple-400"
+              id="spaces"
+            />
+            <Image src="/assets/images/icon-check.svg" width={12} height={13} alt="Checkmark" className="absolute top-1 left-[2px] hidden peer-checked:block" />
+          </label>
           <label htmlFor="spaces" className="text-preset-4">
             Exclude Spaces
           </label>
         </div>
         <div className="flex gap-[10px] items-center">
-          <input
-            type="checkbox"
-            className="w-[16px] h-[16px] border-1 border-neutral-900 rounded-[4px] focus:outline-none focus:ring-2 focus:ring-blue-500"
-            id="characterLimit"
-          />
-          <label htmlFor="characterLimit" className="text-preset-4">
+        <label className="relative group hover:cursor-pointer">
+            <input
+              type="checkbox"
+              className="w-[16px] h-[16px] peer appearance-none border border-1 border-neutral-200 rounded-[4px] group-hover:cursor-pointer group-hover:border-neutral-600 focus:ring-2 focus:ring-offset-2 focus:ring-purple-400 checked:bg-purple-400 checked:border-purple-400"
+              id="spaces"
+            />
+            <Image src="/assets/images/icon-check.svg" width={12} height={13} alt="Checkmark" className="absolute top-1 left-[2px] hidden peer-checked:block" />
+          </label>
+          <label htmlFor="chars" className="text-preset-4">
             Set Character Limit
           </label>
         </div>
