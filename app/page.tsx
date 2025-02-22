@@ -1,6 +1,7 @@
 import LetterDensity from "./components/LetterDensity";
 import Navbar from "./components/Navbar";
 import StatContainer from "./components/StatContainer";
+import Stats from "./components/Stats";
 import TextInput from "./components/TextInput";
 
 export default function Home() {
@@ -11,26 +12,7 @@ export default function Home() {
         Analyze your text in real-time.
       </h1>
       <TextInput />
-      <div className="mt-[40px] flex flex-col gap-[16px] md:flex-row">
-        <StatContainer
-          count={278}
-          label="Total Characters"
-          color="bg-purple-400"
-          image="/assets/images/pattern-character-count.svg"
-        />
-        <StatContainer
-          count={39}
-          label="Word Count"
-          color="bg-yellow-500"
-          image="/assets/images/pattern-word-count.svg"
-        />
-        <StatContainer
-          count={4}
-          label="Sentence Count"
-          color="bg-orange-500"
-          image="/assets/images/pattern-sentence-count.svg"
-        />
-      </div>
+      <Stats />
       <LetterDensity />
       <div className="h-screen"></div>
     </div>

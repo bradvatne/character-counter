@@ -1,11 +1,22 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { useTextStore } from "../store/textStore";
 
 const TextInput = () => {
+  const { text, setText } = useTextStore();
+
+  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setText(e.target.value);
+  };
+
   const tooManyChars = false;
   return (
     <div>
       <textarea
+        value={text}
+        onChange={handleTextChange}
+        placeholder="Start typing here... (or paste your text)"
         className={`h-[200px] bg-neutral-100 w-full resize-none rounded-[12px] border-2 appearance-none focus:outline-none
     focus:shadow-outline p-[12px] text-preset-3 dark:bg-neutral-800 dark:text-neutral-200 ${
       tooManyChars
