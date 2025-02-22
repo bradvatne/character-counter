@@ -5,13 +5,13 @@ import TextInput from "./components/TextInput";
 
 export default function Home() {
   return (
-    <div className="p-4">
+    <div className="p-4 lg:max-w-[990px] mx-auto">
       <Navbar />
       <h1 className="text-center text-preset-1-mobile py-[40px]">
         Analyze your text in real-time.
       </h1>
       <TextInput />
-      <div className="mt-[40px] flex flex-col gap-[16px]">
+      <div className="mt-[40px] flex flex-col gap-[16px] md:flex-row">
         <StatContainer
           count={278}
           label="Total Characters"

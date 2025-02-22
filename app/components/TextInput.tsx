@@ -8,8 +8,8 @@ const TextInput = () => {
         className="h-[200px] bg-neutral-100 w-full resize-none rounded-[12px] border-2 border-neutral-200 appearance-none focus:outline-none
     focus:shadow-outline p-[12px] text-preset-3 dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-200"
       />
-      <div className="flex flex-col gap-[10px]">
-        <div className="flex gap-[10px] pt-[16px] items-center">
+      <div className="flex flex-col gap-[10px] md:flex-row md:items-center pt-[16px]">
+        <div className="flex gap-[10px]  items-center">
           <label className="relative group hover:cursor-pointer">
             <input
               type="checkbox"
@@ -35,7 +35,7 @@ const TextInput = () => {
             Set Character Limit
           </label>
         </div>
-        <p className="pt-[2px]">Approx. reading time: </p>
+        <p className="pt-[2px] md:ml-auto">Approx. reading time: &lt;1 minute</p>
       </div>
     </div>
   );
