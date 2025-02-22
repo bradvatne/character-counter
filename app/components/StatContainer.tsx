@@ -10,7 +10,7 @@ type StatContainerProps = {
 
 const StatContainer = ({ count, label, color, image }: StatContainerProps) => {
   return (
-    <div className={` w-full ${color} rounded-[12px] relative overflow-hidden`}>
+    <div className={` w-full ${color} rounded-[12px] relative overflow-hidden dark:text-neutral-900`}>
       <div className="flex justify-between">
         <div className="flex flex-col pl-[16px] justify-center align-middle gap-[8px]">
           <p className="text-preset-1-mobile">{count}</p>
