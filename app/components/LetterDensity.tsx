@@ -1,4 +1,7 @@
-import React from "react";
+"use client";
+import React, { use } from "react";
+import { useTextStore } from "../store/textStore";
+import { characterCount } from "../lib/helperFunctions";
 
 type LetterDensityItemProps = {
   letter: string;
@@ -23,22 +26,28 @@ const LetterDensityItem = ({
           style={{ width: `${clampedPercentage}%` }}
         ></div>
       </div>
-      <p className="text-preset-4 whitespace-nowrap">{count} ()</p>
+      <p className="text-preset-4 whitespace-nowrap">{count} ({percentageTwoDecimals})</p>
     </div>
   );
 };
 
 const LetterDensity = () => {
+  const { text } = useTextStore();
+  const charMap = characterCount(text);
   return (
     <div className="mt-[24px]">
       <h2 className="text-preset-2 text-neutral-900 mb-[20px]">
         Letter Density
       </h2>
       <div className="flex flex-col gap-[12px]">
-        <LetterDensityItem letter="A" count={50} total={100} />
-        <LetterDensityItem letter="A" count={50} total={100} />
-        <LetterDensityItem letter="A" count={50} total={100} />
-        <LetterDensityItem letter="A" count={50} total={100} />
+        {Object.entries(charMap).map(([letter, count]) => (
+          <LetterDensityItem
+            key={letter}
+            letter={letter}
+            count={count}
+            total={text.length}
+          />
+        ))}
       </div>
     </div>
   );
