@@ -4,11 +4,11 @@ import StatContainer from "./StatContainer";
 import { useTextStore } from "../store/textStore";
 
 const Stats = () => {
-  const { charCount, wordCount, sentenceCount } = useTextStore();
+  const { wordCount, sentenceCount, excludeSpaces, text } = useTextStore();
   return (
     <div className="mt-[40px] flex flex-col gap-[16px] md:flex-row">
       <StatContainer
-        count={charCount}
+        count={excludeSpaces ? text.replace(/\s/g, '').length : text.length}
         label="Total Characters"
         color="bg-purple-400"
         image="/assets/images/pattern-character-count.svg"
