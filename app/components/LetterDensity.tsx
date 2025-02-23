@@ -1,5 +1,5 @@
 "use client";
-import React, { use } from "react";
+import React, { useState } from "react";
 import { useTextStore } from "../store/textStore";
 import { characterCount } from "../lib/helperFunctions";
 
@@ -26,21 +26,32 @@ const LetterDensityItem = ({
           style={{ width: `${clampedPercentage}%` }}
         ></div>
       </div>
-      <p className="text-preset-4 whitespace-nowrap">{count} ({percentageTwoDecimals})</p>
+      <p className="text-preset-4 whitespace-nowrap">
+        {count} ({percentageTwoDecimals})
+      </p>
     </div>
   );
 };
 
 const LetterDensity = () => {
   const { text } = useTextStore();
-  const charMap = characterCount(text);
+  const charMap = Object.entries(characterCount(text));
+  const [isExpanded, setIsExpanded] = useState(false);
+  const visibleItems = isExpanded ? charMap : charMap.slice(0, 5);
+  const hasMoreItems = charMap.length > 5;
+
   return (
     <div className="mt-[24px]">
-      <h2 className="text-preset-2 text-neutral-900 mb-[20px]">
+      <h2 className="text-preset-2 text-neutral-900 mb-[20px] dark:text-neutral-200">
         Letter Density
       </h2>
+      {text.length == 0 && (
+        <p className="text-preset-4">
+          No characters found. start typing to see letter density.
+        </p>
+      )}
       <div className="flex flex-col gap-[12px]">
-        {Object.entries(charMap).map(([letter, count]) => (
+        {visibleItems.map(([letter, count]) => (
           <LetterDensityItem
             key={letter}
             letter={letter}
@@ -49,6 +60,14 @@ const LetterDensity = () => {
           />
         ))}
       </div>
+      {hasMoreItems && (
+        <button
+          className="appearance-none text-preset-3 mt-[20px]"
+          onClick={() => setIsExpanded(!isExpanded)}
+        >
+          {isExpanded ? "Show less" : "Show more"}
+        </button>
+      )}
     </div>
   );
 };
