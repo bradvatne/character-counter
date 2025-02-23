@@ -2,6 +2,7 @@
 import Image from "next/image";
 import React from "react";
 import { useTextStore } from "../store/textStore";
+import { estimateReadingTime } from "../lib/helperFunctions";
 
 const TextInput = () => {
   const {
@@ -10,7 +11,6 @@ const TextInput = () => {
     excludeSpaces,
     characterLimit,
     setCharacterLimit,
-    charCount,
     isLimitCharacters,
     setIsLimitCharacters,
     toggleExcludeSpaces,
@@ -20,6 +20,8 @@ const TextInput = () => {
     setText(e.target.value);
   };
 
+
+  const charCount = excludeSpaces ? text.replace(/\s/g, '').length : text.length;
   return (
     <div>
       <textarea
@@ -28,12 +30,12 @@ const TextInput = () => {
         placeholder="Start typing here... (or paste your text)"
         className={`h-[200px] bg-neutral-100 w-full resize-none rounded-[12px] border-2 appearance-none focus:outline-none
     focus:shadow-outline p-[12px] text-preset-3 dark:bg-neutral-800 dark:text-neutral-200 ${
-      charCount > characterLimit
+      isLimitCharacters && (charCount > characterLimit)
         ? "border-orange-500 shadow-md shadow-orange-500/50"
         : "border-neutral-200 dark:border-neutral-700"
     }`}
       />
-      {charCount > characterLimit && (
+      {isLimitCharacters && (charCount > characterLimit) && (
         <p className="text-orange-500 text-preset-4 mt-[8px] flex items-center">
           <Image
             src="/assets/images/icon-info.svg"
@@ -104,7 +106,7 @@ const TextInput = () => {
         </div>
 
         <p className="pt-[2px] md:ml-auto">
-          Approx. reading time: &lt;1 minute
+          Approx. reading time: {estimateReadingTime(text)} 
         </p>
       </div>
     </div>

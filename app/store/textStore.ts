@@ -27,7 +27,7 @@ export const useTextStore = create<TextState>((set) => ({
 
   // Actions
   setText: (input: string) =>
-    set((state) => {
+    set(() => {
       const newText = input || "";
       return {
         text: newText,
