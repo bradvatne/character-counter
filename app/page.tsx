@@ -13,7 +13,6 @@ export default function Home() {
       <TextInput />
       <Stats />
       <LetterDensity />
-      <div className="h-screen"></div>
     </div>
   );
 }
