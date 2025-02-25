@@ -1,6 +1,5 @@
 import LetterDensity from "./components/LetterDensity";
 import Navbar from "./components/Navbar";
-import StatContainer from "./components/StatContainer";
 import Stats from "./components/Stats";
 import TextInput from "./components/TextInput";
 
